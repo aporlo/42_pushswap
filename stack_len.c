@@ -12,30 +12,17 @@
 
 #include "push_swap.h"
 
-int	stack_len(t_stack *stack, char stack_name)
+int	stack_len(t_list *stack)
 {
-	t_list		*head;
-	t_list		*end;
+	t_list		*temp;
 	int			len;
 
-	if (stack_name == 'a')
-		head = stack->a;
-	else
-		head = stack->b;
-	if (head)
+	len = 1;
+	temp = stack->next;
+	while (stack != temp)
 	{
-		if (stack_name == 'a')
-			end = stack->a->prev;
-		else
-			end = stack->b->prev;
-	}
-	len = 0;
-	while (head)
-	{
+		temp = temp->next;
 		len++;
-		if (head == end)
-			break ;
-		head = head->next;
 	}
 	return (len);
 }

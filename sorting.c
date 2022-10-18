@@ -15,19 +15,18 @@ void	sorting(t_stack *stack)
 {
 	int	size;
 
-	if (!(is_sorted(&stack->a)))
+	size = stack_len(stack->a);
+	if (size <= 5)
 	{
-		size = stack_len(stack, 'a');
-		if (size <= 5)
+		if (size == 2)
 		{
-			if (size == 2 && stack->a->data > stack->a->next->data)
-				swap(stack, 'a');
-			else if (size == 3)
-				sort_three(stack);
-			else if (size <= 5)
-				sort_five(stack, size);
+			swap(stack, 'a');
 		}
-		else
-			sort_large(stack, size);
+		else if (size == 3)
+			sort_three(stack);
+		// else if (size <= 5)
+		// 	sort_five(stack, size);
 	}
+	// else
+	// 	sort_large(stack, size);
 }

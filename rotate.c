@@ -14,14 +14,25 @@
 
 void	rotate(t_stack *stack, char stack_name)
 {
+	// t_list	*head;
+	// t_list	*last;
+
 	if (stack->a && stack_name == 'a')
 	{
+		// head = stack->a;
+		// last = head->prev;
+		// stack->a = head->next;
+		// last->next = head;
 		stack->a = stack->a->next;
 		print_opt(stack->to_print, "ra\n");
 	}
 	else if (stack->b && stack_name == 'b')
 	{
-		stack->b = stack->b->next;
+		// head = stack->b;
+		// last = head->prev;
+		// stack->b = head->next;
+		// last->next = head;
+		stack->a = stack->b->next;
 		print_opt(stack->to_print, "rb\n");
 	}
 	else if (stack->a && stack->b && stack_name == 'c')

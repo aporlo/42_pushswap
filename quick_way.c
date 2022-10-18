@@ -22,7 +22,7 @@ int	quick_way(t_stack *stack, int value)
 
 	pos = 0;
 	moves = 0;
-	size = stack_len(stack, 'b');
+	size = stack_len(stack->b);
 	mid = size / 2;
 	current = stack;
 	while (current->b->data != value)

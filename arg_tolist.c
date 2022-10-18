@@ -11,16 +11,35 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 static void	index_list(t_list **list);
-t_list		get_smallest(t_list **list);
+t_list		*get_smallest(t_list **list);
 
-void	arg_tolist(t_list **stack, int argc, char **argv)
+void	print_stack(t_list *stack)
+{
+	t_list	*temp;
+
+	temp = stack->prev;
+	while (stack != temp)
+	{
+		printf("%d -> ", stack->data);
+		stack = stack->next;
+	}
+	printf("%d -> ", stack->data);
+	printf("NULL\n");
+}
+
+int	arg_tolist(t_list **stack, int argc, char **argv)
 {
 	t_list	*new_list;
+	t_list	*last;
 	char	**arg;
 	int		i;
 	int		num;
+	// (void)*stack;
+	// (void)*new_list;
 
 	i = 0;
 	if (argc == 2)
@@ -30,16 +49,22 @@ void	arg_tolist(t_list **stack, int argc, char **argv)
 		i = 1;
 		arg = argv;
 	}
-	while (arg[i])
+	while (i < argc && arg[i])
 	{
 		num = atoi(arg[i]);
-		new_list = ft_lstnew((void *)&num);
+		new_list = ft_lstnew(num);
 		ft_lstadd_back(stack, new_list);
+		// print_stack(*stack);
 		i++;
 	}
-	index_list(stack);
 	if (argc == 2)
 		free_split(arg);
+	index_list(stack);
+	if (check_dup(*stack))
+		return (1);
+	last = ft_lstlast(*stack);
+	last->next = *stack;
+	return (0);
 }
 
 void	free_split(char **arg)
@@ -62,15 +87,15 @@ static void	index_list(t_list **list)
 
 	i = 0;
 	head = NULL;
-	*head = get_smallest(list);
+	head = get_smallest(list);
 	while (head)
 	{
 		head->index = i++;
-		*head = get_smallest(list);
+		head = get_smallest(list);
 	}
 }
 
-t_list	get_smallest(t_list **list)
+t_list	*get_smallest(t_list **list)
 {
 	t_list	*head;
 	t_list	*min;
@@ -91,5 +116,5 @@ t_list	get_smallest(t_list **list)
 			head = head->next;
 		}
 	}
-	return (*min);
+	return (min);
 }

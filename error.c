@@ -23,18 +23,28 @@ void	error(t_list *list)
 
 void	free_stack(t_list *list)
 {
-	t_list		*stack_next;
 	t_list		*delete;
+	// t_list		*temp;
 
-	if (list)
+	// if (list)
+	// {
+	// 	stack_next = list->next;
+	// 	while (stack_next != list)
+	// 	{
+	// 		delete = stack_next;
+	// 		stack_next = stack_next->next;
+	// 		free(delete);
+	// 	}
+	// 	free(stack_next);
+	// }
+	// temp = list->next;
+	printf("hello\n");
+	while (list)
 	{
-		stack_next = list->next;
-		while (stack_next != list)
-		{
-			delete = stack_next;
-			stack_next = stack_next->next;
-			free(delete);
-		}
-		free(stack_next);
+		delete = list->next;
+		printf("data%d", list->data);
+		free (list);
+		list = delete;
 	}
+
 }

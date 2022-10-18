@@ -14,13 +14,16 @@
 
 static void	to_swap(t_list *list)
 {
-	long int	tmp;
+	int		tmp;
 
 	if (list && list->next != list)
 	{
 		tmp = list->data;
 		list->data = list->next->data;
 		list->next->data = tmp;
+		tmp = list->index;
+		list->index = list->next->index;
+		list->next->index = tmp;
 	}
 	return ;
 }

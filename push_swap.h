@@ -32,8 +32,7 @@
 
 typedef struct s_list
 {
-	void				*content;
-	long int			data;
+	int					data;
 	int					index;
 	struct s_list		*next;
 	struct s_list		*prev;
@@ -42,8 +41,8 @@ typedef struct s_list
 typedef struct s_stack
 {
 	int				to_print;
-	struct s_list	*a;
-	struct s_list	*b;
+	t_list			*a;
+	t_list			*b;
 
 	int				len;
 	int				mid;
@@ -60,7 +59,7 @@ void	print_opt(int to_print, char *opt);
 void	error(t_list *list);
 
 void	check_arg(int argc, char **argv);
-void	check_dup(t_list *list);
+int		check_dup(t_list *list);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *s);
 int		ft_isdigit(int c);
@@ -68,10 +67,12 @@ void	ft_putstr_fd(char *s, int fd);
 // int		ft_lstsize(t_list1 *lst);
 // void	ft_lstclear(t_list1 **lst, void (*del)(void*));
 void	ft_lstadd_back(t_list **lst, t_list *new);
+// void	ft_lstadd_back(t_list **lst, int data);
 size_t	ft_strlen(const char *s);
-t_list	*ft_lstnew(void *content);
+t_list	*ft_lstnew(int data);
 t_list	*ft_lstlast(t_list *lst);
-void	arg_tolist(t_list **stack, int argc, char **argv);
+// void	arg_tolist(t_list **stack, int argc, char **argv);
+int		arg_tolist(t_list **stack, int argc, char **argv);
 
 int		is_sorted(t_list **list);
 int		quick_way(t_stack *stack, int value);
@@ -80,7 +81,7 @@ void	sort_three(t_stack *stack);
 void	sort_five(t_stack *stack, int size);
 int		*sort_tab(t_stack *stack, int size);
 void	sort_large(t_stack *stack, int size);
-int		stack_len(t_stack *stack, char stack_name);
+int		stack_len(t_list *stack);
 void	free_stack(t_list *list);
 void	free_split(char **arg);
 

@@ -1,6 +1,6 @@
 NAME	= push_swap
 CC		= gcc
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -g -Wall -Wextra -Werror
 
 SRCS	= swap.c \
 		push.c \
@@ -38,7 +38,7 @@ OBJS	= ${SRCS:.c=.o}
 	gcc ${FLAGS} -c $< -o $@
 
 $(NAME): ${OBJS}
-	gcc -o ${NAME} ${OBJS}
+	gcc -g -o ${NAME} ${OBJS}
 
 all: ${NAME}
 
@@ -62,4 +62,4 @@ bonus: all
 
 rebonus: fclean bonus
 
-.PHONY: norminette all
+.PHONY: norminette all ${NAME}

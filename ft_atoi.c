@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	ft_atoi(const char *s)
 {
-	unsigned int	n;
+	long			n;
 	int				i;
 	int				sign;
 
@@ -32,6 +32,11 @@ int	ft_atoi(const char *s)
 	{
 		n = n * 10 + (s[i] - '0');
 		i++;
+	}
+	if (n > 2147483647)
+	{
+		ft_putstr_fd("Error\n", 2);
+		exit (0);
 	}
 	return ((int)(sign * n));
 }

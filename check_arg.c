@@ -17,7 +17,6 @@ static int	is_num(char *arg)
 	int	i;
 
 	i = 0;
-
 	if (arg[0] == '-' && ft_strlen(arg) > 1)
 		i++;
 	while (arg[i])
@@ -37,7 +36,7 @@ static int	compare(int v1, int v2)
 		return (1);
 }
 
-void	check_dup(t_list *list)
+int	check_dup(t_list *list)
 {
 	t_list		*lst;
 
@@ -51,12 +50,13 @@ void	check_dup(t_list *list)
 			{
 				ft_putstr_fd("Error3\n", 2);
 				free_stack(list);
-				exit (0);
+				return (1);
 			}
 			lst = lst->next;
 		}
 		list = list->next;
 	}
+	return (0);
 }
 
 void	check_arg(int argc, char **argv)
