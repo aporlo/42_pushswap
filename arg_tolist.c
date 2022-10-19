@@ -21,13 +21,13 @@ void	print_stack(t_list *stack)
 {
 	t_list	*temp;
 
-	temp = stack->prev;
+	temp = stack->next;
+	printf("%d -> ", stack->data);
 	while (stack != temp)
 	{
-		printf("%d -> ", stack->data);
-		stack = stack->next;
+		printf("%d -> ", temp->data);
+		temp = temp->next;
 	}
-	printf("%d -> ", stack->data);
 	printf("NULL\n");
 }
 
@@ -64,6 +64,7 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 		return (1);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
+	// print_stack(*stack);
 	return (0);
 }
 

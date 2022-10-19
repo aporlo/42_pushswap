@@ -18,18 +18,18 @@ void	reverse(t_stack *stack, char stack_name)
 {
 	if (stack->a && stack_name == 'a')
 	{
-		stack->a = stack->a->prev;
+		stack->a = stack_last(stack->a);
 		print_reverse(stack->to_print, "rra\n");
 	}
 	else if (stack->b && stack_name == 'b')
 	{
-		stack->b = stack->b->prev;
+		stack->b = stack_last(stack->b);
 		print_reverse(stack->to_print, "rrb\n");
 	}
 	else if (stack->a && stack->b && stack_name == 'c')
 	{
-		stack->a = stack->a->prev;
-		stack->b = stack->b->prev;
+		stack->a = stack_last(stack->a);
+		stack->b = stack_last(stack->b);
 		print_reverse(stack->to_print, "rrr\n");
 	}
 }

@@ -29,6 +29,7 @@ SRCS	= swap.c \
 		sorting.c\
 		stack_len.c\
 		ft_putstr_fd.c\
+		sort_big.c\
 
 OBJS	= ${SRCS:.c=.o}
 

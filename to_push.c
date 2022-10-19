@@ -12,30 +12,45 @@
 
 #include "push_swap.h"
 
-void	to_push(t_list **head, char stack_name, long int data)
+t_list	*stack_last(t_list *list)
 {
-	t_list	*temp;
+	int	len;
 
-	(void)stack_name;
-	if (*head)
+	len = stack_len(list);
+	while (--len && len >= 0)
 	{
-		temp = (t_list *)malloc(sizeof(t_list));
-		if (!temp)
-			error(*head);
-		temp->next = *head;
-		temp->prev = (*head)->prev;
-		(*head)->prev = temp;
-		temp->prev->next = temp;
-		temp->data = data;
-		*head = (*head)->prev;
+		list = list->next;
+	}
+	return (list);
+}
+
+void	to_push(t_list **from_stack, t_list **to_stack)
+{
+	t_list	*head;
+	t_list	*last;
+
+	// print_stack(*from_stack);
+	// print_stack(*to_stack);
+	if(*from_stack)
+	{
+		head = *from_stack;
+		last = stack_last(*from_stack);
+		*from_stack = (*from_stack)->next;
+		last->next = *from_stack;
+		// print_stack(*from_stack);
+	}
+	if (*to_stack)
+	{
+		head->next = *to_stack;
+		last = stack_last(*to_stack);
+		*to_stack = head;
+		last->next = head;
 	}
 	else
 	{
-		*head = (t_list *)malloc(sizeof(t_list));
-		if (!head)
-			error(*head);
-		(*head)->next = *head;
-		(*head)->prev = *head;
-		(*head)->data = data;
+		*to_stack = head;
+		(*to_stack)->next = *to_stack;
 	}
+	// print_stack(*from_stack);
+	// print_stack(*to_stack);
 }

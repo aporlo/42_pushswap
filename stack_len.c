@@ -17,8 +17,14 @@ int	stack_len(t_list *stack)
 	t_list		*temp;
 	int			len;
 
-	len = 1;
-	temp = stack->next;
+	len = 0;
+	if (stack)
+	{
+		len = 1;
+		temp = stack->next;
+	}
+	else
+		return (0);
 	while (stack != temp)
 	{
 		temp = temp->next;

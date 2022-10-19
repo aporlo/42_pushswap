@@ -18,11 +18,13 @@ int	is_sorted(t_list **list)
 
 	head = *list;
 	temp = head->next;
-	while (temp != head)
+	if (head->data > head->next->data)
+		return (0);
+	while (temp->next != head)
 	{
-		if (head->data > head->next->data)
+		if (temp->data > temp->next->data)
 			return (0);
-		head = head->next;
+		temp = temp->next;
 	}
 	return (1);
 }
