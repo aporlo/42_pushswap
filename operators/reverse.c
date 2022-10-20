@@ -37,5 +37,5 @@ void	reverse(t_stack *stack, char stack_name)
 static void	print_reverse(int to_print, char *opt)
 {
 	if (to_print)
-		write(1, opt, 4);
+		write(STDOUT_FILENO, opt, 4);
 }

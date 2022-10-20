@@ -16,7 +16,7 @@ void	free_stack(t_list *list);
 
 void	error(t_list *list)
 {
-	write(2, "Error\n", 6);
+	write(STDERR_FILENO, "Error\n", 6);
 	free_stack(list);
 	exit(-1);
 }

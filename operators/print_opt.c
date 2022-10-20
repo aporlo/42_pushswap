@@ -15,5 +15,5 @@
 void	print_opt(int to_print, char *opt)
 {
 	if (to_print)
-		write(1, opt, 3);
+		write(STDOUT_FILENO, opt, 3);
 }

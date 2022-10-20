@@ -40,7 +40,6 @@ int	check_dup(t_list *list)
 {
 	t_list		*lst;
 
-	// printf("is:%ld\n", list->data);
 	while (list)
 	{
 		lst = list->next;
@@ -48,7 +47,7 @@ int	check_dup(t_list *list)
 		{
 			if (!compare(list->data, lst->data))
 			{
-				ft_putstr_fd("Error3\n", 2);
+				ft_putstr_fd("Error\n", STDERR_FILENO);
 				free_stack(list);
 				return (1);
 			}
@@ -79,9 +78,9 @@ void	check_arg(int argc, char **argv)
 	{
 		num = ft_atoi(arg[i]);
 		if (!is_num(arg[i]))
-			ft_putstr_fd("Error:1\n", 2);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 		if (num < INT_MIN || num > INT_MAX)
-			ft_putstr_fd("Error:3\n", 2);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 		i++;
 	}
 	if (argc == 2)

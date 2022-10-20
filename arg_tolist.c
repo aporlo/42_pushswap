@@ -44,8 +44,6 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 	char	**arg;
 	int		i;
 	int		num;
-	// (void)*stack;
-	// (void)*new_list;
 
 	i = 0;
 	if (argc == 2)
@@ -60,7 +58,6 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 		num = atoi(arg[i]);
 		new_list = ft_lstnew(num);
 		ft_lstadd_back(stack, new_list);
-		// print_stack(*stack);
 		i++;
 	}
 	if (argc == 2)
@@ -70,7 +67,6 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 		return (1);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
-	// print_stack(*stack);
 	return (0);
 }
 

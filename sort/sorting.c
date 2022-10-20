@@ -16,25 +16,6 @@ void	sorting(t_stack *stack)
 	int	size;
 
 	size = stack_len(stack->a);
-	// print_stack("a", stack->a);
-	// push(stack, 'b');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
-	// push(stack, 'b');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
-	// push(stack, 'a');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
-	// push(stack, 'a');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
-	// push(stack, 'a');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
-	// push(stack, 'a');
-	// print_stack("a", stack->a);
-	// print_stack("b", stack->b);
 	if (size > 1)
 	{
 		if (size == 2)
@@ -50,7 +31,4 @@ void	sorting(t_stack *stack)
 		else
 			sort_big(stack);
 	}
-
-	// else
-	// 	sort_large(stack, size);
 }

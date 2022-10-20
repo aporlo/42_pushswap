@@ -23,24 +23,15 @@ static void	push_swap(t_stack *stack)
 	}
 	else
 		sorting(stack);
-	// printf("%d\n", is_sorted(&stack->a));
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack		stack;
 
-	// t_list		*a;
-	// t_list		*b;
 	if (argc < 2)
 		return (1);
 	check_arg(argc, argv);
-	// a = (t_list *)malloc(sizeof(t_list));
-	// b = (t_list *)malloc(sizeof(t_list));
-	// if (!a && !b)
-	// 	return (1);
-	// a = NULL;
-	// b = NULL;
 	stack.a = NULL;
 	stack.b = NULL;
 	if (arg_tolist(&stack.a, argc, argv))
