@@ -29,16 +29,12 @@ void	to_push(t_list **from_stack, t_list **to_stack)
 	t_list	*head;
 	t_list	*last;
 
-	// print_stack(*from_stack);
-	// print_stack(*to_stack);
-	if(*from_stack)
-	{
-		head = *from_stack;
-		last = stack_last(*from_stack);
-		*from_stack = (*from_stack)->next;
-		last->next = *from_stack;
-		// print_stack(*from_stack);
-	}
+	if (!*from_stack)
+		return ;
+	head = *from_stack;
+	last = stack_last(*from_stack);
+	*from_stack = (*from_stack)->next;
+	last->next = *from_stack;
 	if (*to_stack)
 	{
 		head->next = *to_stack;
@@ -51,6 +47,8 @@ void	to_push(t_list **from_stack, t_list **to_stack)
 		*to_stack = head;
 		(*to_stack)->next = *to_stack;
 	}
-	// print_stack(*from_stack);
-	// print_stack(*to_stack);
+	if (*from_stack == *to_stack)
+	{
+		*from_stack = NULL;
+	}
 }

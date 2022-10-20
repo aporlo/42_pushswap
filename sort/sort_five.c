@@ -1,37 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sorting.c                                          :+:      :+:    :+:   */
+/*   sort_five.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsomrat <lsomrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 15:15:19 by lsomrat           #+#    #+#             */
-/*   Updated: 2022/10/11 15:15:36 by lsomrat          ###   ########.fr       */
+/*   Created: 2022/10/12 14:12:47 by lsomrat           #+#    #+#             */
+/*   Updated: 2022/10/12 14:13:22 by lsomrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	sorting(t_stack *stack)
+void	sort_five(t_stack *stack)
 {
-	int	size;
+	int			distance;
 
-	size = stack_len(stack->a);
-	if (size > 1)
+	distance = get_distance(stack, get_min(stack, -1));
+	if (distance == 1)
+		rotate(stack, 'a');
+	else if (distance == 2)
 	{
-		if (size == 2)
-		{
-			swap(stack, 'a');
-		}
-		else if (size == 3)
-			sort_three(stack);
-		else if (size == 4)
-			sort_four(stack);
-		else if (size == 5)
-			sort_five(stack);
-		else
-			sort_big(stack);
+		rotate(stack, 'a');
+		rotate(stack, 'a');
 	}
-
-	// else
-	// 	sort_large(stack, size);
+	else if (distance == 3)
+	{
+		reverse(stack, 'a');
+		reverse(stack, 'a');
+	}
+	else if (distance == 4)
+	{
+		reverse(stack, 'a');
+	}
+	if (is_sorted(&stack->a))
+		return ;
+	push(stack, 'b');
+	sort_four(stack);
+	push(stack, 'a');
 }

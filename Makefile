@@ -2,44 +2,43 @@ NAME	= push_swap
 CC		= gcc
 FLAGS	= -g -Wall -Wextra -Werror
 
-SRCS	= swap.c \
-		push.c \
-		rotate.c \
-		reverse.c \
-		to_push.c \
-		print_opt.c \
+SRCS	= main.c \
 		error.c \
-		arg_tolist.c\
-		check_arg.c\
-		ft_atoi.c\
-		ft_isdigit.c\
-		ft_lstadd_back.c\
-		ft_lstlast.c\
-		ft_lstnew.c\
-		ft_lstsize.c\
-		ft_split.c\
-		ft_strlen.c\
-		is_sorted.c\
-		main.c\
-		quick_way.c\
-		sort_five.c\
-		sort_three.c\
-		sort_large.c\
-		sort_tab.c\
-		sorting.c\
-		stack_len.c\
-		ft_putstr_fd.c\
-		sort_big.c\
+		arg_tolist.c \
+		check_arg.c \
+		is_sorted.c \
+		operators/swap.c \
+		operators/push.c \
+		operators/rotate.c \
+		operators/reverse.c \
+		operators/to_push.c \
+		operators/print_opt.c \
+		sort/sorting.c \
+		sort/quick_way.c \
+		sort/sort_three.c \
+		sort/sort_four.c \
+		sort/sort_five.c \
+		sort/sort_big.c \
+		utils/ft_atoi.c \
+		utils/ft_isdigit.c \
+		utils/ft_lstadd_back.c \
+		utils/ft_putstr_fd.c \
+		utils/ft_lstlast.c \
+		utils/ft_lstnew.c \
+		utils/ft_lstsize.c \
+		utils/ft_split.c \
+		utils/ft_strlen.c \
+		utils/stack_len.c
 
 OBJS	= ${SRCS:.c=.o}
 
 # OBJS_B    = ${SRCS_B:.c=.o}
 
 %.o: %.c
-	gcc ${FLAGS} -c $< -o $@
+	gcc ${FLAGS} -I./ -c $< -o $@
 
 $(NAME): ${OBJS}
-	gcc -g -o ${NAME} ${OBJS}
+	gcc ${OBJS} -I./ -o ${NAME}
 
 all: ${NAME}
 

@@ -12,27 +12,58 @@
 
 #include "push_swap.h"
 
-int	quick_way(t_stack *stack, int value)
+int	find_max(t_list *stack)
 {
-	int		size;
-	int		moves;
-	int		pos;
-	int		mid;
-	t_stack	*current;
+	int		max;
+	int		len;
+	t_list	*temp;
 
-	pos = 0;
-	moves = 0;
-	size = stack_len(stack->b);
-	mid = size / 2;
-	current = stack;
-	while (current->b->data != value)
+	len = stack_len(stack);
+	temp = stack->next;
+	max = stack->index;
+	while (len--)
 	{
-		current->b = current->b->next;
-		pos++;
+		if (max < temp->index)
+			max = temp->index;
+		temp = temp->next;
 	}
-	if (pos <= mid)
-		moves += pos;
-	else
-		moves = (-1 * (size - pos));
-	return (moves);
+	return (max);
+}
+
+int	find_big_back(t_list *stack)
+{
+	int		i;
+	int		j;
+	int		max;
+	t_list	*temp;
+
+	i = 0;
+	j = 0;
+	temp = stack;
+	max = find_max(stack);
+	while (i <= (stack_len(stack) - 1))
+	{
+		if (temp->index >= max)
+			j = i;
+		temp = temp->next;
+		i++;
+	}
+	return (i - j);
+}
+
+int	find_big_front(t_list *stack)
+{
+	int		i;
+	int		max;
+	t_list	*temp;
+
+	i = 0;
+	temp = stack;
+	max = find_max(stack);
+	while (temp->index < max)
+	{
+		temp = temp->next;
+		i++;
+	}
+	return (i);
 }

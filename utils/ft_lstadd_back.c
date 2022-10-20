@@ -27,16 +27,3 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		new->prev = last;
 	}
 }
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	if (!lst)
-		return (0);
-	while (lst)
-	{
-		if (lst->next == NULL)
-			return (lst);
-		lst = lst->next;
-	}
-	return (lst);
-}

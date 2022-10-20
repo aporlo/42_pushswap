@@ -17,10 +17,16 @@
 static void	index_list(t_list **list);
 t_list		*get_smallest(t_list **list);
 
-void	print_stack(t_list *stack)
+void	print_stack(char *str, t_list *stack)
 {
 	t_list	*temp;
 
+	printf("%s:: ", str);
+	if (!stack)
+	{
+		printf("NULL\n");
+		return ;
+	}
 	temp = stack->next;
 	printf("%d -> ", stack->data);
 	while (stack != temp)

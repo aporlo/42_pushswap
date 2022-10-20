@@ -32,7 +32,7 @@ void	rotate(t_stack *stack, char stack_name)
 		// last = head->prev;
 		// stack->b = head->next;
 		// last->next = head;
-		stack->a = stack->b->next;
+		stack->b = stack->b->next;
 		print_opt(stack->to_print, "rb\n");
 	}
 	else if (stack->a && stack->b && stack_name == 'c')
