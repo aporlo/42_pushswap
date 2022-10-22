@@ -24,4 +24,5 @@ t_list	*ft_lstnew(int data)
 	ptr->prev = NULL;
 	ptr->index = -1;
 	return (ptr);
+	free_stack(ptr);
 }

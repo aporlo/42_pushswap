@@ -34,11 +34,12 @@ int	main(int argc, char **argv)
 	check_arg(argc, argv);
 	stack.a = NULL;
 	stack.b = NULL;
-	if (arg_tolist(&stack.a, argc, argv))
-		return (1);
-	// arg_tolist(&stack.a, argc, argv);
-	// if (check_dup(stack.a))
-	// 	return (1);
+	arg_tolist(&stack.a, argc, argv);
+	if (stack.a == NULL)
+	{
+		free_stack(stack.a);
+	}
 	push_swap(&stack);
+	free_stack(stack.a);
 	return (0);
 }

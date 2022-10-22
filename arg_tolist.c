@@ -29,7 +29,7 @@ void	print_stack(char *str, t_list *stack)
 	}
 	temp = stack->next;
 	printf("%d -> ", stack->data);
-	while (stack != temp)
+	while (stack != temp && temp != NULL)
 	{
 		printf("%d -> ", temp->data);
 		temp = temp->next;
@@ -52,18 +52,22 @@ static void	to_list(t_list **stack, int argc, char **argv)
 		i = 1;
 		arg = argv;
 	}
-	while (i < argc && arg[i])
+	while (i <= argc && arg[i])
 	{
+		// printf("i is %d\n", i);
 		num = atoi(arg[i]);
+		// printf("num is%d\n", num);
 		new_list = ft_lstnew(num);
+		// printf("new_list is %d\n", num);
 		ft_lstadd_back(stack, new_list);
 		i++;
 	}
+	// free_stack(new_list);
 	if (argc == 2)
 		free_split(arg);
 }
 
-int	arg_tolist(t_list **stack, int argc, char **argv)
+void	arg_tolist(t_list **stack, int argc, char **argv)
 {
 	t_list	*last;
 	// char	**arg;
@@ -77,6 +81,7 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 	// 	i = 1;
 	// 	arg = argv;
 	// }
+	// printf("argument is %s\n", argv[1]);
 	to_list(stack, argc, argv);
 	// print_stack("a", *stack);
 	check_dup(*stack);
@@ -87,7 +92,8 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 	index_list(stack);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
-	return (0);
+	// free_stack(*stack);
+	// return (0);
 }
 
 static void	index_list(t_list **list)

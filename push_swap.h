@@ -46,7 +46,7 @@ void	print_stack(char *str, t_list *stack);
 t_list	*stack_last(t_list *list);
 
 void	check_arg(int argc, char **argv);
-int		check_dup(t_list *list);
+void	check_dup(t_list *list);
 char	**ft_split(char const *s, char c);
 int		ft_atoi(const char *s);
 int		ft_isdigit(int c);
@@ -55,7 +55,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 size_t	ft_strlen(const char *s);
 t_list	*ft_lstnew(int data);
 t_list	*ft_lstlast(t_list *lst);
-int		arg_tolist(t_list **stack, int argc, char **argv);
+void	arg_tolist(t_list **stack, int argc, char **argv);
 
 int		is_sorted(t_list **list);
 int		find_max(t_list *stack);
