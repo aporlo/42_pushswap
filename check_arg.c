@@ -36,26 +36,34 @@ static int	compare(int v1, int v2)
 		return (1);
 }
 
-int	check_dup(t_list *list)
+void	check_dup(t_list *list)
 {
 	t_list		*lst;
+	t_list		*temp;
+	int			len;
+	int			i;
+	int			j;
 
-	while (list)
+	i = 0;
+	len = stack_len(list);
+	temp = list;
+	while (i < len)
 	{
-		lst = list->next;
-		while (lst)
+		lst = temp;
+		j = 0;
+		while (j < i)
 		{
 			if (!compare(list->data, lst->data))
 			{
-				ft_putstr_fd("Error\n", STDERR_FILENO);
 				free_stack(list);
-				return (1);
+				ft_putstr_fd("Error\n", STDERR_FILENO);
 			}
 			lst = lst->next;
+			j++;
 		}
 		list = list->next;
+		i++;
 	}
-	return (0);
 }
 
 void	check_arg(int argc, char **argv)

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_len.c                                        :+:      :+:    :+:   */
+/*   free_split.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsomrat <lsomrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 21:39:20 by lsomrat           #+#    #+#             */
-/*   Updated: 2022/10/12 21:39:23 by lsomrat          ###   ########.fr       */
+/*   Created: 2022/10/21 15:42:29 by lsomrat           #+#    #+#             */
+/*   Updated: 2022/10/21 15:42:48 by lsomrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	stack_len(t_list *stack)
+void	free_split(char **arg)
 {
-	t_list		*temp;
-	int			len;
+	int	i;
 
-	len = 0;
-	if (stack)
+	i = 0;
+	while (arg[i])
 	{
-		len = 1;
-		temp = stack->next;
+		free(arg[i]);
+		i++;
 	}
-	else
-		return (0);
-	while (stack != temp && temp != NULL)
-	{
-		temp = temp->next;
-		len++;
-	}
-	return (len);
+	free(arg);
 }

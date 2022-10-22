@@ -37,13 +37,12 @@ void	print_stack(char *str, t_list *stack)
 	printf("NULL\n");
 }
 
-int	arg_tolist(t_list **stack, int argc, char **argv)
+static void	to_list(t_list **stack, int argc, char **argv)
 {
-	t_list	*new_list;
-	t_list	*last;
-	char	**arg;
-	int		i;
 	int		num;
+	char	**arg;
+	t_list	*new_list;
+	int		i;
 
 	i = 0;
 	if (argc == 2)
@@ -62,25 +61,33 @@ int	arg_tolist(t_list **stack, int argc, char **argv)
 	}
 	if (argc == 2)
 		free_split(arg);
+}
+
+int	arg_tolist(t_list **stack, int argc, char **argv)
+{
+	t_list	*last;
+	// char	**arg;
+	// int		i;
+
+	// i = 0;
+	// if (argc == 2)
+	// 	arg = ft_split(argv[1], ' ');
+	// else
+	// {
+	// 	i = 1;
+	// 	arg = argv;
+	// }
+	to_list(stack, argc, argv);
+	// print_stack("a", *stack);
+	check_dup(*stack);
+	// if (argc == 2)
+	// 	free_split(arg);
+	// if (check_dup(*stack))
+	// 	return (1);
 	index_list(stack);
-	if (check_dup(*stack))
-		return (1);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
 	return (0);
-}
-
-void	free_split(char **arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		free(arg[i]);
-		i++;
-	}
-	free(arg);
 }
 
 static void	index_list(t_list **list)
@@ -111,7 +118,8 @@ t_list	*get_smallest(t_list **list)
 	{
 		while (head)
 		{
-			if ((head->index == -1) && (!has_min || head->data < min->data))
+			if ((head->index == -1)
+				&& (!has_min || head->data < min->data))
 			{
 				min = head;
 				has_min = 1;

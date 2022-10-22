@@ -7,6 +7,7 @@ SRCS	= main.c \
 		arg_tolist.c \
 		check_arg.c \
 		is_sorted.c \
+		free_split.c \
 		operators/swap.c \
 		operators/push.c \
 		operators/rotate.c \

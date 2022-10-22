@@ -42,6 +42,7 @@ void	to_push(t_list **from_stack, t_list **to_stack);
 void	print_opt(int to_print, char *opt);
 void	error(t_list *list);
 void	print_stack(char *str, t_list *stack);
+// void	to_list(t_list **stack, int argc, char **argv);
 t_list	*stack_last(t_list *list);
 
 void	check_arg(int argc, char **argv);
