@@ -25,9 +25,7 @@ void	push_chankb(t_stack *stack, int size)
 		{
 			push(stack, 'b');
 			if (stack->b->index < chank_n * size - (size / 2))
-			{
 				rotate(stack, 'b');
-			}
 			count++;
 		}
 		else

@@ -23,6 +23,7 @@ static void	push_swap(t_stack *stack)
 	}
 	else
 		sorting(stack);
+	free_stack(stack->a);
 }
 
 int	main(int argc, char **argv)
@@ -40,6 +41,5 @@ int	main(int argc, char **argv)
 		free_stack(stack.a);
 	}
 	push_swap(&stack);
-	free_stack(stack.a);
 	return (0);
 }

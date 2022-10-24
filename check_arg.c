@@ -56,7 +56,7 @@ void	check_dup(t_list *list)
 			if (!compare(list->data, lst->data))
 			{
 				free_stack(list);
-				ft_putstr_fd("Error3\n", STDERR_FILENO);
+				ft_putstr_fd("Error\n", STDERR_FILENO);
 			}
 			lst = lst->next;
 			j++;
@@ -82,15 +82,18 @@ void	check_arg(int argc, char **argv)
 		i = 1;
 		arg = argv;
 	}
+	// printf("argc %d\n", argc);
+	// printf("arg is%s\n", arg);
 	num = ft_atoi(arg[i]);
 	is_num(arg[i]);
-	while (arg[i])
+	while (argv[i])
 	{
+		// printf("num is %s\n", arg[i]);
 		num = ft_atoi(arg[i]);
 		if (!is_num(arg[i]))
-			ft_putstr_fd("Error1\n", STDERR_FILENO);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 		if (num < INT_MIN || num > INT_MAX)
-			ft_putstr_fd("Error2\n", STDERR_FILENO);
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 		i++;
 	}
 	if (argc == 2)

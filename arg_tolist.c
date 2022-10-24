@@ -54,46 +54,28 @@ static void	to_list(t_list **stack, int argc, char **argv)
 	}
 	while (i <= argc && arg[i])
 	{
-		// printf("i is %d\n", i);
 		num = atoi(arg[i]);
-		// printf("num is%d\n", num);
 		new_list = ft_lstnew(num);
-		// printf("new_list is %d\n", num);
 		ft_lstadd_back(stack, new_list);
 		i++;
 	}
-	// free_stack(new_list);
-	if (argc == 2)
-		free_split(arg);
+	// if (argc == 2)
+	// 	free_split(arg);
 }
 
 void	arg_tolist(t_list **stack, int argc, char **argv)
 {
 	t_list	*last;
-	// char	**arg;
-	// int		i;
 
-	// i = 0;
-	// if (argc == 2)
-	// 	arg = ft_split(argv[1], ' ');
-	// else
-	// {
-	// 	i = 1;
-	// 	arg = argv;
-	// }
-	// printf("argument is %s\n", argv[1]);
 	to_list(stack, argc, argv);
-	// print_stack("a", *stack);
 	check_dup(*stack);
-	// if (argc == 2)
-	// 	free_split(arg);
-	// if (check_dup(*stack))
-	// 	return (1);
 	index_list(stack);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
-	// free_stack(*stack);
-	// return (0);
+	// if (*stack == NULL)
+	// {
+	// 	free_stack(*stack);
+	// }
 }
 
 static void	index_list(t_list **list)
