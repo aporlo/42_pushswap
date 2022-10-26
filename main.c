@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	t_stack		stack;
 
 	if (argc < 2)
-		return (1);
+		return (0);
 	check_arg(argc, argv);
 	stack.a = NULL;
 	stack.b = NULL;

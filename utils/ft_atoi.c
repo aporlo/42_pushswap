@@ -33,7 +33,7 @@ int	ft_atoi(const char *s)
 		n = n * 10 + (s[i] - '0');
 		i++;
 	}
-	if (n > 2147483647)
+	if ((n > 2147483647 && sign == 1) || (n > 2147483648 && sign == -1) )
 	{
 		ft_putstr_fd("Error\n", 2);
 		exit (0);

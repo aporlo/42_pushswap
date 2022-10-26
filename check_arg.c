@@ -66,36 +66,70 @@ void	check_dup(t_list *list)
 	}
 }
 
+// static 	get_arg(int argc, char **argv)
+// {
+// 	char	**arg;
+
+// 	if (argc == 2)
+// 	{
+// 		arg = ft_split(argv[1], ' ');
+// 	}
+// 	else
+// 	{
+// 		arg = argv;
+// 	}
+// }
+
+// void	check_arg(int argc, char **argv)
+// {
+// 	int		i;
+// 	long	num;
+// 	char	**arg;
+
+// 	i = 0;
+// 	if (argc > 2)
+// 		i = 1;
+// 	arg = get_arg(argc, argv);
+// 	num = ft_atoi(arg[i]);
+// 	is_num(arg[i]);
+// 	while (arg[i])
+// 	{
+// 		num = ft_atoi(arg[i]);
+// 		if (!is_num(arg[i]))
+// 			ft_putstr_fd("Error\n", STDERR_FILENO);
+// 		if (num < INT_MIN || num > INT_MAX)
+// 			ft_putstr_fd("Error\n", STDERR_FILENO);
+// 		i++;
+// 	}
+// 	if (argc == 2)
+// 		free_split(arg);
+// }
 void	check_arg(int argc, char **argv)
 {
 	int		i;
+	int		j;
 	long	num;
 	char	**arg;
 
-	i = 0;
-	if (argc == 2)
+	j = 0;
+	(void)argc;
+	if ( argv[1][0] == '\0')
+		exit(1);
+	while (argv[1 + j])
 	{
-		arg = ft_split(argv[1], ' ');
-	}
-	else
-	{
-		i = 1;
-		arg = argv;
-	}
-	// printf("argc %d\n", argc);
-	// printf("arg is%s\n", arg);
-	num = ft_atoi(arg[i]);
-	is_num(arg[i]);
-	while (argv[i])
-	{
-		// printf("num is %s\n", arg[i]);
-		num = ft_atoi(arg[i]);
-		if (!is_num(arg[i]))
-			ft_putstr_fd("Error\n", STDERR_FILENO);
-		if (num < INT_MIN || num > INT_MAX)
-			ft_putstr_fd("Error\n", STDERR_FILENO);
-		i++;
-	}
-	if (argc == 2)
+		i = 0;
+		arg = ft_split(argv[1 + j], ' ');
+		while (arg[i])
+		{
+			num = ft_atoi(arg[i]);
+			is_num(arg[i]);
+			if (!is_num(arg[i]))
+				ft_putstr_fd("Error\n", STDERR_FILENO);
+			if (num < INT_MIN || num > INT_MAX)
+				ft_putstr_fd("Error\n", STDERR_FILENO);
+			i++;
+		}
+		j++;
 		free_split(arg);
+	}
 }
