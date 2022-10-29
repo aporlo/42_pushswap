@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-void	free_stack(t_list *list);
-
-// void	error(t_list *list)
-// {
-// 	write(STDERR_FILENO, "Error\n", 6);
-// 	free_stack(list);
-// 	exit(-1);
-// }
-
 void	free_stack(t_list *list)
 {
 	t_list		*delete;

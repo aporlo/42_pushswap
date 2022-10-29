@@ -31,5 +31,4 @@ void	sorting(t_stack *stack)
 		else
 			sort_big(stack);
 	}
-	// print_stack("a", stack->a);
 }

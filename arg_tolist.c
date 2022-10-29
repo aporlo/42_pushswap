@@ -6,7 +6,7 @@
 /*   By: lsomrat <lsomrat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 02:23:45 by lsomrat           #+#    #+#             */
-/*   Updated: 2022/10/09 02:24:18 by lsomrat          ###   ########.fr       */
+/*   Updated: 2022/10/29 21:34:15 by lsomrat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,10 @@
 static void	index_list(t_list **list);
 t_list		*get_smallest(t_list **list);
 
-void	print_stack(char *str, t_list *stack)
+void	check_argv(char **argv)
 {
-	t_list	*temp;
-
-	printf("%s:: ", str);
-	if (!stack)
-	{
-		printf("NULL\n");
-		return ;
-	}
-	temp = stack->next;
-	printf("%d -> ", stack->data);
-	while (stack != temp && temp != NULL)
-	{
-		printf("%d -> ", temp->data);
-		temp = temp->next;
-	}
-	printf("NULL\n");
+	if (argv[1][0] == '\0')
+		exit(0);
 }
 
 static void	to_list(t_list **stack, int argc, char **argv)
@@ -45,46 +31,25 @@ static void	to_list(t_list **stack, int argc, char **argv)
 	int		i;
 	int		j;
 
-	// i = 0;
-	// if (argc == 2)
-	// 	arg = ft_split(argv[1], ' ');
-	// else
-	// {
-	// 	i = 1;
-	// 	arg = argv;
-	// }
-	// while (arg[i])
-	// {
-	// 	num = atoi(arg[i]);
-	// 	// printf("num are%s\n", arg[i]);
-	// 	new_list = ft_lstnew(num);
-	// 	ft_lstadd_back(stack, new_list);
-	// 	i++;
-	// }
-	// if (argc == 2)
-	// 	free_split(arg);
 	j = 0;
 	(void)argc;
-	if ( argv[1][0] == '\0')
-		exit(1);
+	check_argv(argv);
 	while (argv[1 + j])
 	{
 		i = 0;
 		arg = ft_split(argv[1 + j], ' ');
+		if (!arg[0])
+			ft_putstr_fd("Error\n", STDERR_FILENO);
 		while (arg[i])
 		{
-			// printf("arg is %s\n", arg[i]);
 			num = ft_atoi(arg[i]);
-			// printf("num is %d\n", num);
 			new_list = ft_lstnew(num);
 			ft_lstadd_back(stack, new_list);
 			i++;
 		}
 		j++;
 		free_split(arg);
-		// printf("arg %s\n", *arg);
 	}
-	// free_split(arg);
 }
 
 void	arg_tolist(t_list **stack, int argc, char **argv)
@@ -94,13 +59,8 @@ void	arg_tolist(t_list **stack, int argc, char **argv)
 	to_list(stack, argc, argv);
 	check_dup(*stack);
 	index_list(stack);
-	// print_stack("a", *stack);
 	last = ft_lstlast(*stack);
 	last->next = *stack;
-	// if (*stack == NULL)
-	// {
-	// 	free_stack(*stack);
-	// }
 }
 
 static void	index_list(t_list **list)
